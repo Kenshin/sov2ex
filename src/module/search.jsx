@@ -22,7 +22,17 @@ export default class Search extends React.Component{
                     </div>
                 </div>
                 <div className="searchresults">
-                
+                    <div className="resultcard">
+                        <div className="title">
+                            <a href="http://www.v2ex.com/t/367982" target="_blank">
+                                为了达到完美的阅读模式这个小目标 ，我适配了 120+ 个网站，因此诞生了简悦 - 让你瞬间进入沉浸式阅读的 Chrome 扩展
+                            </a>
+                        </div>
+                        <div className="desc">
+                            简悦- SimpRead 让你瞬间进入沉浸式阅读的 Chrome 扩展,还原阅读的本质,提升你的阅读体验。 简悦是什么: 简悦是 沉浸式阅读的 Chrome 扩展,取自:「简单阅读,心情...
+                        </div>
+                        <div className="details"></div>
+                    </div>
                 </div>
         </div>
         )

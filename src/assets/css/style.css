@@ -172,3 +172,27 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.searchpage .searchresults .resultcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0 20%;
+    margin-top: 30px;
+    padding: 16px;
+
+    color: color( var(--text-color) alpha(-13%));
+
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+}
+
+.searchpage .searchresults .resultcard .title {
+    font-size: 1.4rem;
+}
+
+.searchpage .searchresults .resultcard .title a {
+    color: color( var(--text-color) alpha(-10%));
+    text-decoration: none;
+}
