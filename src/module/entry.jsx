@@ -4,10 +4,19 @@ import TextField from 'textfield';
 
 export default class Entry extends React.Component{
 
-    change() {
-        
+    onKeyDown() {
+        event.keyCode == 13 &&
+            this.search( event.target.value );
     }
-    
+
+    onClick() {
+        this.search( this.refs.search.refs.target.value );
+    }
+
+    search( value ) {
+        window.location.href = window.location.origin + `?q=${value}`;
+    }
+
     render() {
         return (
             <div className="entry">
@@ -17,10 +26,11 @@ export default class Entry extends React.Component{
                 <div className="searchbar">
                     <div className="search">
                         <TextField 
+                            ref="search"
                             placeholder="请输入查询的关键字" 
-                            onChange={ ()=>this.change() }
+                            onKeyDown={ ()=> this.onKeyDown() }
                         />
-                        <span className="bar"></span>
+                        <span className="bar" onClick={ ()=> this.onClick() }></span>
                     </div>
                 </div>
                 <div className="desc">
