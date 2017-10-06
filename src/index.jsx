@@ -7,6 +7,6 @@ import Search     from 'search';
 import Controlbar from 'controlbar';
 
 ReactDOM.render(
-    <Entry />,
+    location.search.startsWith( "?q=" ) ? <Search/> : <Entry/>,
     $( ".main" )[0]
 );
