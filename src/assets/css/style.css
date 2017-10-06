@@ -1,3 +1,8 @@
+:root {
+    --primary-color: rgba(3, 169, 244, 1);
+    --text-color: rgba(51, 51, 51, 1);
+}
+
 /**
  * Golbal style
  */
@@ -5,7 +10,7 @@
 html {
     font: 300 16px/1.8 -apple-system, PingFang SC, Microsoft Yahei, Lantinghei SC, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 
-    color:#333;
+    color: var(--text-color);
 
     text-rendering: optimizelegibility;
     -webkit-text-size-adjust: 100%;
@@ -58,18 +63,27 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 
+    cursor: pointer;
+}
+
+.entry .desc {
+    color: color( var(--text-color) alpha(-20%));
+    font-size: .9rem;
+    text-align: center;
+}
+
+.entry .desc a {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
 .entry .searchbar text-field {
     width: 400px!important;
 }
 
-.entry .desc {
-    font-size: 1rem;
-    text-align: center;
-}
-
-.entry .desc a {
-    color: #03A9F4;
-    text-decoration: none;
+.entry .searchbar  text-field text-field-state {
+    border-top: none var(--primary-color) !important;
+    border-left: none var(--primary-color) !important;
+    border-right: none var(--primary-color) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
 }
