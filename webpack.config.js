@@ -158,29 +158,31 @@ const webpack           = require( 'webpack' ),
       plugins: plugins,
 
       module: {
-        loaders: [{
-            test: /\.js[x]?$/,
-            exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-              presets: [ 'es2015', 'stage-0', 'react' ]
-            }
-        },
+        loaders: [
+          {
+              test: /\.js[x]?$/,
+              exclude: /node_modules/,
+              loader: 'babel',
+              query: {
+                presets: [ 'es2015', 'stage-0', 'react' ]
+              }
+          },
 
-        // css in js
-        //{ test: /\.css$/,         loader: 'style!css!postcss' },
+          // css in js
+          //{ test: /\.css$/,         loader: 'style!css!postcss' },
 
-        // extract css files
-        { test: /\.css$/,           loader: ExtractTextPlugin.extract( "style", "css!postcss" ) },
+          // extract css files
+          { test: /\.css$/,           loader: ExtractTextPlugin.extract( "style", "css!postcss" ) },
 
-        // image in js
-        { test: /\.(png|jpg|gif)$/, loader: 'url?limit=12288'   },
+          // image in js
+          { test: /\.(png|jpg|gif)$/, loader: 'url?limit=12288'   },
 
-        // expose $
-        {
-          test  : require.resolve( './src/vender/jquery-2.1.1.min.js' ),
-          loader: 'expose?jQuery!expose?$'
-        }
+          // expose $
+          {
+            test  : require.resolve( './src/vender/jquery-2.1.1.min.js' ),
+            loader: 'expose?jQuery!expose?$'
+          },
+
         ]
       },
 
