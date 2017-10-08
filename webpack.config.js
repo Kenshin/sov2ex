@@ -1,4 +1,5 @@
-const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
+const ExtractTextPlugin = require( 'extract-text-webpack-plugin' ),
+      HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack           = require( 'webpack' ),
     plugins             = [
 
@@ -23,6 +24,16 @@ const webpack           = require( 'webpack' ),
 
       // extract css files
       new ExtractTextPlugin( '[name].css' ),
+
+      // minify html files
+      new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: 'src/index.html',
+        minify: {
+          collapseWhitespace: true,
+        },
+      }),
+
     ],
 
     // conditions environment
@@ -60,7 +71,6 @@ const webpack           = require( 'webpack' ),
         // copy files
         plugins.push(
           new CopyWebpackPlugin([
-            { from   : "src/index.html" ,                 to : './' },
             { context: 'src/assets/images/', from : "*" , to : './assets/images' },
           ])
         );
