@@ -1,7 +1,8 @@
-const webpack = require( 'webpack' ),
-    plugins = [
+const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
+const webpack           = require( 'webpack' ),
+    plugins             = [
 
-      // public reqire( xxx )
+      // omit import xxx
       new webpack.ProvidePlugin({
         React    : 'react',
         ReactDOM : 'react-dom',
@@ -19,6 +20,9 @@ const webpack = require( 'webpack' ),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify( 'production' ) // or development
       }),
+
+      // extract css files
+      new ExtractTextPlugin( '[name].css' ),
     ],
 
     // conditions environment
@@ -143,12 +147,12 @@ const webpack = require( 'webpack' ),
       },
 
       devServer: {
+        contentBase: './src',
+        port: 8080,
         historyApiFallback: true,
         hot: true,
         inline: true,
         progress: true,
-        contentBase: './src',
-        port: 8080
       },
 
       plugins: plugins,
@@ -162,8 +166,17 @@ const webpack = require( 'webpack' ),
               presets: [ 'es2015', 'stage-0', 'react' ]
             }
         },
-        { test: /\.css$/,           loader: 'style!css!postcss' },
+
+        // css in js
+        //{ test: /\.css$/,         loader: 'style!css!postcss' },
+
+        // extract css files
+        { test: /\.css$/,           loader: ExtractTextPlugin.extract( "style", "css!postcss" ) },
+
+        // image in js
         { test: /\.(png|jpg|gif)$/, loader: 'url?limit=12288'   },
+
+        // expose $
         {
           test  : require.resolve( './src/vender/jquery-2.1.1.min.js' ),
           loader: 'expose?jQuery!expose?$'
@@ -173,6 +186,7 @@ const webpack = require( 'webpack' ),
 
       postcss: function () {
         return [
+          require( 'import-postcss'  )(),
           require( 'postcss-cssnext' )()
         ]
       },
