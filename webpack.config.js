@@ -35,9 +35,7 @@ const webpack           = require( 'webpack' ),
       const OpenBrowserPlugin  = require('open-browser-webpack-plugin');      
       if ( !isProduction() ) {
         plugins.push(
-          new webpack.HotModuleReplacementPlugin()
-        );
-        plugins.push(
+          new webpack.HotModuleReplacementPlugin(),
           new OpenBrowserPlugin({ url: 'http://localhost:8080' })
         );
       }
