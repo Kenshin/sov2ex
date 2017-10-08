@@ -19,7 +19,7 @@
     align-items: center;
 
     width: 100%;
-    height: 200px;
+    height: 150px;
 
     background-color: var(--primary-color);
 }
@@ -118,6 +118,26 @@
 .searchpage .searchresults .resultcard .desc {
     @apply --ellipsis;
     -webkit-line-clamp: 3;
+
+    padding: 16px 0;
+
     color: color( var(--text-color) alpha(-46%));
     font-size: 1rem;
+}
+
+.searchpage .searchresults .resultcard .details {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+
+    color: color( var(--text-color) alpha(-46%));
+    font-size: .8rem;
+}
+
+.searchpage .searchresults .resultcard .details a {
+    color: var(--primary-color);
+
+    text-transform: capitalize;
+    text-decoration: none;
 }
