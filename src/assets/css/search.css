@@ -22,12 +22,13 @@
     height: 150px;
 
     background-color: var(--primary-color);
+    box-shadow: var( --shadow );
 }
 
 .searchpage .top .logo {
     position: absolute;
 
-    top: 58px;
+    top: 45px;
     left: 50px;
 
     zoom: .5;
@@ -102,11 +103,13 @@
     color: color( var(--text-color) alpha(-13%));
 
     border-radius: 2px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+    box-shadow: var( --shadow );
 }
 
 .searchpage .searchresults .resultcard .title {
     @apply --ellipsis;
+
+    width: 100%;
     font-size: 1.4rem;
 }
 
