@@ -1,6 +1,7 @@
 console.log( "==== sov2ex module: Search ====" )
 
 import TextField from 'textfield';
+import Button    from 'button';
 
 export default class Search extends React.Component{
     
@@ -56,6 +57,12 @@ export default class Search extends React.Component{
                             <span className="replies">8 个回复</span>
                         </div>
                     </div>
+                </div>
+                <div className="loading">
+                    <Button type="raised" text="加载更多" width="800px"
+                    color="#fff" backgroundColor="rgba(3, 169, 244, 1)"
+                    waves="md-waves-effect md-waves-button"
+                    />
                 </div>
             </div>
         )
