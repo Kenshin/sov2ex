@@ -9,7 +9,7 @@ export default class Search extends React.Component{
             <div className="searchpage">
                 <div className="top">
                     <div className="logo">
-                        <img src="./assets/images/logo@1x.png"></img>
+                        <img src="./assets/images/logo@1x.png" width="80"></img>
                     </div>
                     <div className="searchbar">
                         <div className="search">

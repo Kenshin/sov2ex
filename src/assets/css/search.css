@@ -11,8 +11,11 @@
 }
 
 .searchpage .top {
+    position: relative;
+
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
 
     width: 100%;
@@ -22,13 +25,16 @@
 }
 
 .searchpage .top .logo {
-    padding: 0 50px;
-    padding-left: 250px;
+    position: absolute;
+
+    top: 58px;
+    left: 50px;
+
     zoom: .5;
 }
 
 .searchpage .searchbar {
-    width: 400px;
+    width: 800px;
 }
 
 .searchpage .searchbar .search {
@@ -58,6 +64,7 @@
 
 
 .searchpage .searchbar input {
+    font-size: 20px!important;
     color: rgba(255, 255, 255,1) !important;
 }
 
@@ -90,6 +97,8 @@
     margin-top: 30px;
     padding: 16px;
 
+    width: 800px;
+
     color: color( var(--text-color) alpha(-13%));
 
     border-radius: 2px;
@@ -97,10 +106,18 @@
 }
 
 .searchpage .searchresults .resultcard .title {
+    @apply --ellipsis;
     font-size: 1.4rem;
 }
 
 .searchpage .searchresults .resultcard .title a {
-    color: color( var(--text-color) alpha(-10%));
+    color: color( var(--text-color) alpha(-13%));
     text-decoration: none;
+}
+
+.searchpage .searchresults .resultcard .desc {
+    @apply --ellipsis;
+    -webkit-line-clamp: 3;
+    color: color( var(--text-color) alpha(-46%));
+    font-size: 1rem;
 }
