@@ -65,7 +65,7 @@
 
 
 .searchpage .searchbar input {
-    font-size: 20px!important;
+    font-size: 18px!important;
     color: rgba(255, 255, 255,1) !important;
 }
 
@@ -104,6 +104,11 @@
 
     border-radius: 2px;
     box-shadow: var( --shadow );
+}
+
+.searchpage .searchresults .resultcard:hover {
+    transition: all 450ms 0ms;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, .16);
 }
 
 .searchpage .searchresults .resultcard .title {
