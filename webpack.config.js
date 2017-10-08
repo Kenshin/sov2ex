@@ -1,7 +1,7 @@
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' ),
-      HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack           = require( 'webpack' ),
-    plugins             = [
+      HtmlWebpackPlugin = require( 'html-webpack-plugin' )
+      webpack           = require( 'webpack' ),
+      plugins           = [
 
       // omit import xxx
       new webpack.ProvidePlugin({
@@ -71,7 +71,7 @@ const webpack           = require( 'webpack' ),
         // copy files
         plugins.push(
           new CopyWebpackPlugin([
-            { context: 'src/assets/images/', from : "*" , to : './assets/images' },
+            { context: 'src/assets/images/', from : '*' , to : './assets/images' },
           ])
         );
 
@@ -180,7 +180,7 @@ const webpack           = require( 'webpack' ),
           //{ test: /\.css$/,         loader: 'style!css!postcss' },
 
           // extract css files
-          { test: /\.css$/,           loader: ExtractTextPlugin.extract( "style", "css!postcss" ) },
+          { test: /\.css$/,           loader: ExtractTextPlugin.extract( 'style', 'css!postcss' ) },
 
           // image in js
           { test: /\.(png|jpg|gif)$/, loader: 'url?limit=12288'   },
