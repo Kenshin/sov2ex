@@ -4,7 +4,20 @@ import TextField from 'textfield';
 import Button    from 'button';
 
 export default class Search extends React.Component{
-    
+
+    onClick() {
+        this.search( this.refs.search.refs.target.value );
+    }
+
+    onKeyDown() {
+        event.keyCode == 13 &&
+            this.search( event.target.value );
+    }
+
+    search( value ) {
+        window.location.href = window.location.origin + `?q=${value}`;
+    }
+
     render() {
         return (
             <div className="searchpage">
@@ -17,6 +30,7 @@ export default class Search extends React.Component{
                             <TextField 
                                 ref="search"
                                 placeholder="请输入查询的关键字" 
+                                onKeyDown={ ()=>this.onKeyDown() }
                             />
                             <span className="bar" onClick={ ()=> this.onClick() }></span>
                         </div>
