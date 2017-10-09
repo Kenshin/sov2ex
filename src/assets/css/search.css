@@ -4,6 +4,7 @@
 
 :root {
     --max-width: 800px;
+    --search-primary-color: rgba(255, 255, 255,1);
 }
 
 .searchpage {
@@ -70,18 +71,18 @@
 
 .searchpage .searchbar input {
     font-size: 18px!important;
-    color: rgba(255, 255, 255,1) !important;
+    color: var(--search-primary-color) !important;
 }
 
 .searchpage .searchbar input::-webkit-input-placeholder {
-    color: rgba(255, 255, 255,1);
+    color: var(--search-primary-color);
 }
 
 .searchpage .searchbar  text-field text-field-state {
-    border-top: none color(rgba(255, 255, 255,1) alpha(-20%)) !important;
-    border-left: none color(rgba(255, 255, 255,1) alpha(-20%)) !important;
-    border-right: none color(rgba(255, 255, 255,1) alpha(-20%)) !important;
-    border-bottom: 2px solid color(rgba(255, 255, 255,1) alpha(-20%)) !important;
+    border-top: none color(var(--search-primary-color) alpha(-20%)) !important;
+    border-left: none color(var(--search-primary-color) alpha(-20%)) !important;
+    border-right: none color(var(--search-primary-color) alpha(-20%)) !important;
+    border-bottom: 2px solid color(var(--search-primary-color) alpha(-20%)) !important;
 }
 
 .searchpage .searchresults {
@@ -104,6 +105,7 @@
     width: var(--max-width);
 
     color: color( var(--text-color) alpha(-13%));
+    background-color: var(--search-primary-color);
 
     border-radius: 2px;
     box-shadow: var( --shadow );
