@@ -22,6 +22,9 @@ export default class Search extends React.Component{
                         </div>
                     </div>
                 </div>
+                <div className="cost">
+                    <span>共计 5 个结果，耗时 20 毫秒</span>
+                </div>
                 <div className="searchresults">
                     <div className="resultcard">
                         <div className="title">
@@ -51,7 +54,7 @@ export default class Search extends React.Component{
                         </div>
                         <div className="details">
                             <a href="https://www.v2ex.com/member/secaas" target="_blank">secaas</a>
-                            &nbsp;于&nbsp;                            
+                            &nbsp;于&nbsp;
                             <span className="date">2017-09-12</span>
                             &nbsp;发表，共计&nbsp;
                             <span className="replies">8 个回复</span>
