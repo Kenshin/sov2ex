@@ -62,6 +62,19 @@ const EmptyCard = () => {
     )
 }
 
+/**
+ * Loading Card
+ */
+const LoadingCard = () => {
+    return (
+        <div className="loading">
+            <svg className="spinner" width="100" height="100" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle className="path" fill="none" strokeWidth="3" strokeLinecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+        </div>
+    )
+}
+
 export default class Search extends React.Component {
 
     static defaultProps = {
@@ -121,7 +134,7 @@ export default class Search extends React.Component {
         .fail( error => {
             console.error( error )
             //new Notify().Render( 2, "当前发生了一些错误，请稍候再使用此服务。" );
-            //this.parse( JSON.parse( tempresult ) )
+            this.parse( JSON.parse( tempresult ) )
         });
     }
 
@@ -144,7 +157,11 @@ export default class Search extends React.Component {
             return <ResultCard { ...item._source } />
         });
 
-        if ( list.length == 0 ) {
+        if ( !this.state.cost.total ) {
+            hidden = true;
+            list   = <LoadingCard />;
+        }
+        else if ( this.state.cost.total == 0 ) {
             hidden = true;
             list   = <EmptyCard />;
         }
@@ -173,7 +190,7 @@ export default class Search extends React.Component {
                 <div className="searchresults">
                     { list }
                 </div>
-                <div className="loading" style={{ visibility: hidden ? "hidden" : "visible" }}>
+                <div className="paging" style={{ visibility: hidden ? "hidden" : "visible" }}>
                     <Button type="raised" text="加载更多" width="832px"
                     color="#fff" backgroundColor="rgba(3, 169, 244, 1)"
                     waves="md-waves-effect md-waves-button"

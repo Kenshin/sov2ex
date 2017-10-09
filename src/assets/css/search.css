@@ -5,6 +5,8 @@
 :root {
     --max-width: 800px;
     --search-primary-color: rgba(255, 255, 255,1);
+    --offset: 187;
+    --duration: 1.4s;
 }
 
 .searchpage {
@@ -173,13 +175,15 @@
     text-decoration: none;
 }
 
-.searchpage .searchresults .empty {
+.searchpage .searchresults .empty,
+.searchpage .searchresults .loading {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     width: 100%;
+    min-height: 200px;
 
     font-weight: 400;
     font-size: 1.2rem;
@@ -198,11 +202,53 @@
     background-image: url( '../icons/404.png' );
 }
 
-.searchpage .loading {
+.searchpage .paging {
     display: flex;
     justify-content: center;
 
     margin-top: 30px;
 
     width: 100%;
+}
+
+/**
+ * Loading bar
+ */
+
+.searchpage .searchresults .loading .spinner {
+    animation: rotator var(--duration) linear infinite;
+}
+
+@keyframes rotator {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+}
+
+.searchpage .searchresults .loading .path {
+    stroke-dasharray: var(--offset);
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation:
+        dash var(--duration) ease-in-out infinite, 
+        colors calc(var(--duration)*4) ease-in-out infinite;
+}
+
+@keyframes colors {
+    0% { stroke: #4285F4; }
+    25% { stroke: #DE3E35; }
+    50% { stroke: #F7C223; }
+    75% { stroke: #1B9A59; }
+    100% { stroke: #4285F4; }
+}
+
+@keyframes dash {
+    0%  { stroke-dashoffset: var(--offset); }
+    50% {
+        stroke-dashoffset: calc( var(--offset)/4 );
+        transform:rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: var(--offset);
+        transform:rotate(450deg);
+    }
 }
