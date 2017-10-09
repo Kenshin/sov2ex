@@ -59,7 +59,7 @@ export default class Search extends React.Component{
                     </div>
                 </div>
                 <div className="loading">
-                    <Button type="raised" text="加载更多" width="800px"
+                    <Button type="raised" text="加载更多" width="832px"
                     color="#fff" backgroundColor="rgba(3, 169, 244, 1)"
                     waves="md-waves-effect md-waves-button"
                     />
