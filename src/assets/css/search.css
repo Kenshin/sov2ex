@@ -173,6 +173,31 @@
     text-decoration: none;
 }
 
+.searchpage .searchresults .empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.searchpage .searchresults .empty .bg {
+    display: block;
+
+    margin-bottom: 20px;
+
+    width: 440px;
+    height: 351px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url( '../icons/404.png' );
+}
+
 .searchpage .loading {
     display: flex;
     justify-content: center;
