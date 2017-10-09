@@ -3,7 +3,22 @@ console.log( "==== sov2ex module: Search ====" )
 import TextField from 'textfield';
 import Button    from 'button';
 
-export default class Search extends React.Component{
+export default class Search extends React.Component {
+
+    static defaultProps = {
+        q    : undefined,
+        from : 0,
+        size : 0,
+        sort : "sumup",
+        order: 0,
+        gte  : 0,
+        lte  : 0,
+    }
+
+    state = {
+        cost   : {},
+        result : {},
+    }
 
     onClick() {
         this.search( this.refs.search.refs.target.value );
@@ -15,7 +30,23 @@ export default class Search extends React.Component{
     }
 
     search( value ) {
-        window.location.href = window.location.origin + `?q=${value}`;
+        if ( value.trim() != "" ) {
+            window.location.href = window.location.origin + `?q=${value}`;
+        } else {
+            new Notify().Render( "不能为空，请输入正确的值。" );
+        }
+    }
+
+    componentWillMount() {
+        if ( location.search.startsWith( "?q=" ) ) {
+            const query = window.location.search.replace( "?", "" ).split( "&" );
+            query && query.length > 0 && query.forEach( item => {
+                const [ key, value ] = item.split( "=" );
+                this.props[key]      = value;
+            });
+        } else {
+            new Notify().Render( "搜索发送了错误，请重新打开本页。" );
+        }
     }
 
     render() {
@@ -28,7 +59,8 @@ export default class Search extends React.Component{
                     <div className="searchbar">
                         <div className="search">
                             <TextField 
-                                ref="search"
+                                ref="search" 
+                                value={ decodeURI( this.props.q ) }
                                 placeholder="请输入查询的关键字" 
                                 onKeyDown={ ()=>this.onKeyDown() }
                             />
