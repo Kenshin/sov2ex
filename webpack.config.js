@@ -29,6 +29,7 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' ),
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: 'src/index.html',
+        inject: false,
         minify: {
           collapseWhitespace: true,
         },
@@ -43,7 +44,7 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' ),
 
     // only when environment variable is 'development' call
     develop = ( function () {
-      const OpenBrowserPlugin  = require('open-browser-webpack-plugin');      
+      const OpenBrowserPlugin  = require('open-browser-webpack-plugin');
       if ( !isProduction() ) {
         plugins.push(
           new webpack.HotModuleReplacementPlugin(),
