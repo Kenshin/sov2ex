@@ -167,7 +167,7 @@ export default class Search extends React.Component {
         }
 
         return (
-            <div className="searchpage">
+            <div className="searchpage" style={{ "height" : hidden ? "100%" : "auto" }}>
                 <div className="top">
                     <div className="logo">
                         <img src="./assets/images/logo@1x.png" width="80"></img>
@@ -187,7 +187,7 @@ export default class Search extends React.Component {
                 <div className="cost" style={{ visibility: hidden ? "hidden" : "visible" }}>
                     <span>共计 {this.state.cost.total} 个结果，耗时 {this.state.cost.took} 毫秒</span>
                 </div>
-                <div className="searchresults">
+                <div className="searchresults" style={{ "height" : hidden ? "100%" : "auto" }}>
                     { list }
                 </div>
                 <div className="paging" style={{ visibility: hidden ? "hidden" : "visible" }}>
@@ -195,6 +195,10 @@ export default class Search extends React.Component {
                     color="#fff" backgroundColor="rgba(3, 169, 244, 1)"
                     waves="md-waves-effect md-waves-button"
                     />
+                </div>
+                <div className="footer">
+                    <span>© 2017 sov2ex</span>
+                    <span>关于</span>
                 </div>
             </div>
         )
