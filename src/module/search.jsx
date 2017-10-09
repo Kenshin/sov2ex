@@ -37,7 +37,7 @@ export default class Search extends React.Component{
                         </div>
                         <div className="details">
                             <a href="https://www.v2ex.com/member/kenshin" target="_blank">kenshin</a>
-                            &nbsp;于&nbsp;                            
+                            &nbsp;于&nbsp;
                             <span className="date">2017-07-03</span>
                             &nbsp;发表，共计&nbsp;
                             <span className="replies">154 个回复</span>
