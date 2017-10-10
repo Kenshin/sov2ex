@@ -95,8 +95,8 @@ export default class Search extends React.Component {
     static defaultProps = {
         url  : "https://www.sov2ex.com/api/search",
         q    : undefined,
-        from : 0,
-        size : 0,
+        page : 1,
+        size : 10,
         sort : "sumup",
         order: 0,
         gte  : 0,
@@ -106,6 +106,7 @@ export default class Search extends React.Component {
     state = {
         cost   : undefined,
         result : [],
+        disable: false,
     }
 
     onClick() {
@@ -126,20 +127,22 @@ export default class Search extends React.Component {
     }
 
     parse( result ) {
+        const list = this.state.result.concat( result.hits );
         this.setState({
             cost: {
                 took : result.took,
                 total: result.total
             },
-            result: result.hits
+            result: list
         });
     }
 
     fetch() {
-        console.log( decodeURI( this.props.q ) )
         $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
+        const page = this.props.page - 1,
+              from = page * this.props.size + page;
         $.ajax({
-            url     : `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}`,
+            url     : `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}&from=${from}`,
             dataType: "json",
             crossDomain: true,
         })
@@ -151,6 +154,17 @@ export default class Search extends React.Component {
             console.error( error )
             new Notify().Render( 2, "当前发生了一些错误，请稍候再使用此服务。" );
         });
+    }
+
+    onClick() {
+        const max = Math.floor( this.state.cost.total / this.props.size );
+        this.props.page++;
+        if ( this.props.page > max ) {
+            this.setState({ disable: true });
+            new Notify().Render( "当前已经是最后一页。" );
+        } else {
+            this.fetch();
+        }
     }
 
     componentWillMount() {
@@ -208,9 +222,11 @@ export default class Search extends React.Component {
                     { list }
                 </div>
                 <div className="paging" style={{ visibility: hidden ? "hidden" : "visible" }}>
-                    <Button type="raised" text="加载更多" width="832px"
-                    color="#fff" backgroundColor="rgba(3, 169, 244, 1)"
-                    waves="md-waves-effect md-waves-button"
+                    <Button type="raised" text={ !this.state.disable ? "加载更多" : "已全部加载完毕" } width="832px"
+                        disable={ this.state.disable }
+                        color="#fff" backgroundColor="rgba(3, 169, 244, 1)"
+                        waves="md-waves-effect md-waves-button"
+                        onClick={ ()=>this.onClick() }
                     />
                 </div>
                 <div className="footer">
