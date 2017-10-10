@@ -105,7 +105,7 @@ export default class Search extends React.Component {
 
     state = {
         cost   : undefined,
-        result : [],
+        list   : [],
         disable: false,
     }
 
@@ -127,13 +127,13 @@ export default class Search extends React.Component {
     }
 
     parse( result ) {
-        const list = this.state.result.concat( result.hits );
+        const list = this.state.list.concat( result.hits );
         this.setState({
+            list,
             cost: {
                 took : result.took,
                 total: result.total
-            },
-            result: list
+            }
         });
     }
 
@@ -182,7 +182,7 @@ export default class Search extends React.Component {
 
     render() {
 
-        let hidden = false, list = this.state.result.map( item => {
+        let hidden = false, list = this.state.list.map( item => {
             return <ResultCard { ...item._source } />
         });
 
