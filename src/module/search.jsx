@@ -171,7 +171,9 @@ export default class Search extends React.Component {
             <div className="searchpage" style={{ "height" : hidden ? "100%" : "auto" }}>
                 <div className="top">
                     <div className="logo">
-                        <img src="./assets/images/logo@1x.png" width="80"></img>
+                        <a href="https://sov2ex.com">
+                            <img src="./assets/images/logo@1x.png" width="80"></img>
+                        </a>
                     </div>
                     <div className="searchbar">
                         <div className="search">
