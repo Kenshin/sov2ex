@@ -106,7 +106,7 @@ export default class Search extends React.Component {
     state = {
         cost   : undefined,
         list   : [],
-        max    : undefined,
+        count  : 0,
         disable: false,
     }
 
@@ -128,7 +128,7 @@ export default class Search extends React.Component {
     }
 
     parse( result ) {
-        const max  = Math.floor( result.total / this.props.size ),
+        const count  = Math.floor( result.total / this.props.size ),
               list = this.state.list.concat( result.hits );
         this.setState({
             list,
@@ -136,8 +136,8 @@ export default class Search extends React.Component {
                 took : result.took,
                 total: result.total
             },
-            disable: this.props.page >= max,
-            max: max == 0 ? 1 : max,
+            disable: this.props.page >= count,
+            count: count == 0 ? 1 : count,
         });
     }
 
@@ -161,7 +161,7 @@ export default class Search extends React.Component {
 
     onClick() {
         this.props.page++;
-        if ( this.props.page > this.state.max ) {
+        if ( this.props.page > this.state.count ) {
             this.setState({ disable: true });
             new Notify().Render( "当前已经是最后一页。" );
         } else {
@@ -224,7 +224,7 @@ export default class Search extends React.Component {
                 <div className="searchresults" style={{ "height" : hidden ? "100%" : "auto" }}>
                     { list }
                 </div>
-                <PagingHR page={ this.props.page } count={ this.state.max } style={{ visibility: hidden ? "hidden" : "visible" }} />
+                <PagingHR page={ this.props.page } count={ this.state.count } style={{ visibility: hidden ? "hidden" : "visible" }} />
                 <div className="paging" style={{ visibility: hidden ? "hidden" : "visible" }}>
                     <Button type="raised" text={ !this.state.disable ? "加载更多" : "已全部加载完毕" } width="832px"
                         disable={ this.state.disable }
