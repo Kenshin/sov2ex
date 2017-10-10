@@ -203,6 +203,8 @@ export default class Search extends React.Component {
             new Notify().Render( "当前已经是最后一页。" );
         } else {
             this.fetch();
+            /page=\d+/.test( window.location.search ) &&
+                history.pushState( "", "", window.location.search.replace( /page=\d+/, `page=${this.props.page}` ) );
         }
     }
 
