@@ -73,6 +73,23 @@ const LoadingCard = () => {
     )
 }
 
+/**
+ * Paging divider
+ * 
+ * @param {object} props 
+ */
+const PagingHR = props => {
+    return (
+        <div className="pagingbg">
+            <div className="paginghr">
+                <div className="divider"/>
+                <span className="page">{ `第 ${props.page} 页` }</span>
+                <div className="divider"/>
+            </div>
+        </div>
+    )
+}
+
 export default class Search extends React.Component {
 
     static defaultProps = {
