@@ -140,7 +140,6 @@ export default class Search extends React.Component {
     }
 
     fetch() {
-        $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
         const page = this.props.page - 1,
               from = page * this.props.size + page;
         $.ajax({
@@ -177,6 +176,7 @@ export default class Search extends React.Component {
                 this.props[key]      = value;
             });
             this.props.q != "" && this.fetch();
+            this.props.q != "" && $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
         } else {
             new Notify().Render( "搜索发送了错误，请重新打开本页。" );
         }
