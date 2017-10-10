@@ -14,7 +14,7 @@ export default class Entry extends React.Component{
     }
 
     search( value ) {
-        window.location.href = window.location.origin + `?q=${value}`;
+        window.location.href = window.location.origin + window.location.pathname + `?q=${value}`;
     }
 
     render() {

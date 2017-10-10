@@ -128,7 +128,7 @@ export default class Search extends React.Component {
 
     search( value ) {
         if ( value.trim() != "" ) {
-            window.location.href = window.location.origin + `?q=${value}`;
+            window.location.href = window.location.origin + window.location.pathname + `?q=${value}`;
         } else {
             new Notify().Render( "不能为空，请输入正确的值。" );
         }
