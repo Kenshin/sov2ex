@@ -83,7 +83,7 @@ const PagingHR = props => {
         <div className="pagingbg" style={ props.style }>
             <div className="paginghr">
                 <div className="divider"/>
-                <span className="page">{ `第 ${props.page} 页，共计 ${ props.count == 0 ? 1 : props.count } 页` }</span>
+                <span className="page">{ `第 ${props.page} 页，共计 ${ props.count } 页` }</span>
                 <div className="divider"/>
             </div>
         </div>
@@ -137,7 +137,7 @@ export default class Search extends React.Component {
                 total: result.total
             },
             disable: this.props.page >= max,
-            max,
+            max: max == 0 ? 1 : max,
         });
     }
 
