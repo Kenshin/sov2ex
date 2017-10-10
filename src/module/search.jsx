@@ -134,7 +134,7 @@ export default class Search extends React.Component {
                 took : result.took,
                 total: result.total
             },
-            disable: result.total < this.props.size
+            disable: result.total <= this.props.size
         });
     }
 
