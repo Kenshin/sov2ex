@@ -127,14 +127,15 @@ export default class Search extends React.Component {
     }
 
     parse( result ) {
-        const list = this.state.list.concat( result.hits );
+        const max  = Math.floor( result.total / this.props.size ),
+              list = this.state.list.concat( result.hits );
         this.setState({
             list,
             cost: {
                 took : result.took,
                 total: result.total
             },
-            disable: result.total <= this.props.size
+            disable: this.props.page >= max
         });
     }
 
