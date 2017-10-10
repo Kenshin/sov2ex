@@ -229,7 +229,7 @@
 }
 
 .searchpage .pagingbg .paginghr .page {
-    width: 250px;
+    width: 450px;
     color: color( var(--text-color) alpha(-46%));
 
     text-align: center;
