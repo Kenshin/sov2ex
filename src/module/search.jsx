@@ -80,7 +80,7 @@ const LoadingCard = () => {
  */
 const PagingHR = props => {
     return (
-        <div className="pagingbg">
+        <div className="pagingbg" style={ props.style }>
             <div className="paginghr">
                 <div className="divider"/>
                 <span className="page">{ `第 ${props.page} 页，共计 ${ props.count == 0 ? 1 : props.count } 页` }</span>
@@ -223,7 +223,7 @@ export default class Search extends React.Component {
                 <div className="searchresults" style={{ "height" : hidden ? "100%" : "auto" }}>
                     { list }
                 </div>
-                <PagingHR page={ this.props.page } count={ this.state.cost && Math.floor( this.state.cost.total / this.props.size ) } />
+                <PagingHR page={ this.props.page } count={ this.state.cost && Math.floor( this.state.cost.total / this.props.size ) } style={{ visibility: hidden ? "hidden" : "visible" }} />
                 <div className="paging" style={{ visibility: hidden ? "hidden" : "visible" }}>
                     <Button type="raised" text={ !this.state.disable ? "加载更多" : "已全部加载完毕" } width="832px"
                         disable={ this.state.disable }
