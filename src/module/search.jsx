@@ -145,7 +145,7 @@ export default class Search extends React.Component {
         const page = this.props.page - 1,
               from = page * this.props.size + page;
         $.ajax({
-            url     : `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}&from=${from}`,
+            url     : `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}&from=${from}&size=${this.props.size}`,
             dataType: "json",
             crossDomain: true,
         })
