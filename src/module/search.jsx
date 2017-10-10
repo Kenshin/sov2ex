@@ -103,6 +103,13 @@ export default class Search extends React.Component {
         lte  : 0,
     }
 
+    static propTypes = {
+        page  : React.PropTypes.number,
+        size  : React.PropTypes.number,
+        order : React.PropTypes.oneOf([ 0, 1 ]),
+        sort  : React.PropTypes.oneOf([ "sumup", "created" ]),
+    }
+
     state = {
         cost   : undefined,
         list   : [],
@@ -125,6 +132,36 @@ export default class Search extends React.Component {
         } else {
             new Notify().Render( "不能为空，请输入正确的值。" );
         }
+    }
+
+    validation( key, value ) {
+        switch ( key ) {
+            case "page":
+                if ( !/[1-9]+/.test( value ) || value < 1 ) {
+                    value = 1;
+                    new Notify().Render( 2, "page 参数错误，取值范围最小值为 1 的正整数，请确认。" );
+                }
+                break;
+            case "size":
+                if ( !/[1-9]+/.test( value ) || value < 1 || value > 50 ) {
+                    value = 10;
+                    new Notify().Render( 2, "size 参数错误，取值范围 1 ~ 50 的正整数，请确认。" );
+                }
+                break;
+            case "order":
+                if ( ![ 0, 1 ].includes( value )) {
+                    value = 0;
+                    new Notify().Render( 2, "order 参数错误，取值范围 0 和 1，请确认。" );
+                }
+                break;
+            case "sort":
+                if ( ![ "sumup", "created" ].includes( value )) {
+                    value = "sumup";
+                    new Notify().Render( 2, "sort 参数错误，取值范围 sumup 和 created，请确认。" );
+                }
+                break;
+        }
+        return value;
     }
 
     parse( result ) {
@@ -174,7 +211,7 @@ export default class Search extends React.Component {
             const query = window.location.search.replace( "?", "" ).split( "&" );
             query && query.length > 0 && query.forEach( item => {
                 const [ key, value ] = item.split( "=" );
-                this.props[key]      = value;
+                this.props[key]      = this.validation( key, value );
             });
             this.props.q != "" && this.fetch();
             this.props.q != "" && $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
