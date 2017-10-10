@@ -121,7 +121,8 @@ export default class Search extends React.Component {
     }
 
     fetch() {
-        console.log( this.props.q )
+        console.log( decodeURI( this.props.q ) )
+        $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
         $.ajax({
             url     : `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}`,
             dataType: "json",
