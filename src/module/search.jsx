@@ -197,8 +197,30 @@ export default class Search extends React.Component {
                     />
                 </div>
                 <div className="footer">
-                    <span>© 2017 sov2ex</span>
-                    <span>关于</span>
+                    <div className="groups">
+                        <div className="links">
+                            <a href="https://sov2ex.com" className="logo">
+                                <img src="./assets/images/logo@1x.png"></img>
+                            </a>
+                            <ul>
+                                <li><a target="_blank" href="http://service.weibo.com/share/share.php?url=https://sov2ex.com&title=SOV2EX - 一个便捷的 v2ex 站内搜索引擎"><span className="icon weibo"></span></a></li>
+                                <li><a target="_blank" href="https://www.douban.com/share/service?href=https://sov2ex.com&name=SOV2EX - 一个便捷的 v2ex 站内搜索引擎"><span className="icon douban"></span></a></li>
+                                <li><a target="_blank" href="https://twitter.com/intent/tweet?text=SOV2EX - 一个便捷的 v2ex 站内搜索引擎&url=https://sov2ex.com"><span className="icon twitter"></span></a></li>
+                                <li><a target="_blank" href="https://www.facebook.com/sharer.php?u=https://sov2ex.com"><span className="icon facebook"></span></a></li>
+                                <li><a target="_blank" href="https://plus.google.com/share?url=https://sov2ex.com"><span className="icon gplus"></span></a></li>
+                                <li><a target="_blank" href="https://t.me/share/url?url=https://sov2ex.com"><span className="icon telegram"></span></a></li>
+                            </ul>
+                        </div>
+                        <div className="links">
+                            <h2>链接</h2>
+                            <a href="https://github.com/Bynil/sov2ex" target="_blank">关于</a>
+                            <a href="https://github.com/Bynil/sov2ex" target="_blank">API 文档</a>
+                            <a href="https://github.com/Bynil/sov2ex/issues" target="_blank">提交问题</a>
+                        </div>
+                    </div>
+                    <div className="copywrite">
+                        <span>SOV2EX - 一个便捷的 v2ex 站内搜索引擎</span> <span>&nbsp;©&nbsp;2017 <a href="https://sov2ex.com">sov2ex.com</a> by <a href="http://www.gexiao.me/" target="_blank">默默</a> & <a href="http://kenshin.wang" target="_blank">Kenshin Wang</a></span>
+                    </div>
                 </div>
             </div>
         )
