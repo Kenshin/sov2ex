@@ -51,11 +51,11 @@ const ResultCard = props => {
 /**
  * Empty Card
  */
-const EmptyCard = () => {
+const EmptyCard = props => {
     return (
         <div className="empty">
             <span className="bg"></span>
-            Oops~ 并未搜索到任何内容，请重新确认搜索关键字!
+            { props.text }
         </div>
     )
 }
@@ -195,7 +195,10 @@ export default class Search extends React.Component {
         }
         else if ( this.state.cost.total == 0 ) {
             hidden = true;
-            list   = <EmptyCard />;
+            list   = <EmptyCard text="Oops~ 并未搜索到任何内容，请重新确认搜索关键字!"/>;
+        } else if ( this.props.page > this.state.count ) {
+            hidden = true;
+            list   = <EmptyCard text={ `关键字：${this.props.q} 查询结果共有 ${this.state.count} 页，已超过最大页数，请重新确认。` } />;
         }
 
         return (
