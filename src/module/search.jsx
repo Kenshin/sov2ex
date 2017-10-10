@@ -133,7 +133,8 @@ export default class Search extends React.Component {
             cost: {
                 took : result.took,
                 total: result.total
-            }
+            },
+            disable: result.total < this.props.size
         });
     }
 
