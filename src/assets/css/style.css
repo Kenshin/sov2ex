@@ -36,3 +36,95 @@ body {
 
 @import 'entry.css';
 @import 'search.css';
+
+@media (max-width: 1024px) {
+    .searchpage .top {
+        flex-direction: column;
+    }
+
+    .searchpage .top .logo {
+        text-align: center;
+    }
+
+    .searchpage .top .logo img {
+        padding-right: 5px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .searchpage .searchbar,
+    .searchpage .cost span,
+    .searchpage .searchresults .resultcard,
+    .searchpage .pagingbg .paginghr,
+    .searchpage .paging a,
+    .footer .groups {
+        min-width: initial;
+        width: 90%;
+    }
+}
+
+@media (max-width: 767px) {
+    .searchpage .searchbar,
+    .searchpage .cost span,
+    .searchpage .searchresults .resultcard,
+    .searchpage .pagingbg .paginghr,
+    .searchpage .paging a,
+    .footer .groups {
+        min-width: initial;
+        width: 85%;
+    }
+}
+
+@media (max-width: 700px) {
+    .searchpage .searchbar,
+    .searchpage .cost span,
+    .searchpage .searchresults .resultcard,
+    .searchpage .pagingbg .paginghr,
+    .searchpage .paging a,
+    .footer .groups {
+        min-width: initial;
+        width: 80%;
+    }
+    .searchpage .pagingbg .paginghr {
+        zoom: .8
+    }
+}
+
+@media (max-width: 540px) {
+    .searchpage .searchbar,
+    .searchpage .cost span,
+    .searchpage .searchresults .resultcard,
+    .searchpage .pagingbg .paginghr,
+    .searchpage .paging a,
+    .footer .groups {
+        min-width: initial;
+        width: 75%;
+    }
+}
+
+@media (max-width: 425px) {
+    .searchpage .searchbar,
+    .searchpage .cost span,
+    .searchpage .searchresults .resultcard,
+    .searchpage .pagingbg .paginghr,
+    .searchpage .paging a {
+        min-width: initial;
+        width: 90%;
+    }
+    .footer {
+        zoom: .8;
+    }
+}
+
+@media (max-width: 368px) {
+    body {
+        zoom: .8;
+    }
+}
+
+@media (max-width: 350px) {
+    .searchpage .searchresults .resultcard .details {
+        @apply --ellipsis;
+    }
+}
