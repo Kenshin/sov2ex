@@ -244,7 +244,7 @@ export default class Search extends React.Component {
             <div className="searchpage" style={{ "height" : hidden ? "100%" : "auto" }}>
                 <div className="top">
                     <div className="logo">
-                        <a href="https://sov2ex.com">
+                        <a href="./">
                             <img src="./assets/images/logo@1x.png"></img>
                         </a>
                     </div>
@@ -279,7 +279,7 @@ export default class Search extends React.Component {
                 <div className="footer">
                     <div className="groups">
                         <div className="links">
-                            <a href="https://sov2ex.com" className="logo">
+                            <a href="./" className="logo">
                                 <img src="./assets/images/logo@1x.png"></img>
                             </a>
                             <ul>
