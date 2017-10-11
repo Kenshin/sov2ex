@@ -245,7 +245,7 @@ export default class Search extends React.Component {
                 <div className="top">
                     <div className="logo">
                         <a href="https://sov2ex.com">
-                            <img src="./assets/images/logo@1x.png" width="80"></img>
+                            <img src="./assets/images/logo@1x.png"></img>
                         </a>
                     </div>
                     <div className="searchbar">
@@ -259,6 +259,7 @@ export default class Search extends React.Component {
                             <span className="bar" onClick={ ()=> this.onClick() }></span>
                         </div>
                     </div>
+                    <div className="placeholder"></div>
                 </div>
                 <div className="cost" style={{ visibility: hidden ? "hidden" : "visible" }}>
                     <span>共计 { this.state.cost && this.state.cost.total} 个结果，耗时 {this.state.cost && this.state.cost.took} 毫秒</span>

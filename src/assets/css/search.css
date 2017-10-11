@@ -33,14 +33,20 @@
 }
 
 .searchpage .top .logo {
-    position: absolute;
+    width: 100%;
+    text-align: right;
+}
 
-    top: 58px;
-    left: 50px;
+.searchpage .top .logo img {
+    padding-right: 20px;
+}
+
+.searchpage .top .placeholder {
+    width: 100%;
 }
 
 .searchpage .searchbar {
-    width: var(--pure-max-width);
+    min-width: var(--pure-max-width);
 }
 
 .searchpage .searchbar .search {
