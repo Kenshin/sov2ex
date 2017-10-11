@@ -268,7 +268,7 @@ export default class Search extends React.Component {
                 </div>
                 <PagingHR page={ this.props.page } count={ this.state.count } style={{ visibility: hidden ? "hidden" : "visible" }} />
                 <div className="paging" style={{ visibility: hidden ? "hidden" : "visible" }}>
-                    <Button type="raised" text={ !this.state.disable ? "加载更多" : "已全部加载完毕" } width="832px"
+                    <Button type="raised" text={ !this.state.disable ? "加载更多" : "已全部加载完毕" }
                         disable={ this.state.disable }
                         color="#fff" backgroundColor="rgba(3, 169, 244, 1)"
                         waves="md-waves-effect md-waves-button"
