@@ -104,6 +104,9 @@ body {
 }
 
 @media (max-width: 425px) {
+    .entry .searchbar {
+        zoom: .9;
+    }
     .searchpage .searchbar,
     .searchpage .cost span,
     .searchpage .searchresults .resultcard,
@@ -121,10 +124,19 @@ body {
     body {
         zoom: .8;
     }
+    .entry .searchbar {
+        zoom: initial;
+    }
 }
 
 @media (max-width: 350px) {
     .searchpage .searchresults .resultcard .details {
         @apply --ellipsis;
+    }
+}
+
+@media (max-width: 320px) {
+    .entry .searchbar {
+        zoom: .7;
     }
 }
