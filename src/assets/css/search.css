@@ -320,13 +320,6 @@
     border-bottom: 2px solid transparent;
 }
 
-.footer .copywrite {
-    padding-bottom: 10px;
-
-    width: 100%;
-    text-align: center;
-}
-
 .footer .groups {
     display: flex;
     flex-direction: row;
@@ -405,11 +398,16 @@
     display: flex;
     justify-content: center;
 
-    padding: 20px 0;
     width: 100%;
 
     opacity: .8;
-    zoom: .5;
+}
+
+.footer .copywrite {
+    padding: 10px 0;
+
+    width: 100%;
+    text-align: center;
 }
 
 .footer .copywrite a:hover {
