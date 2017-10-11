@@ -4,6 +4,7 @@
 
 :root {
     --max-width: 800px;
+    --pure-max-width: 832px;
     --search-primary-color: rgba( 255, 255, 255, 1 );
     --offset: 187;
     --duration: 1.4s;
@@ -93,7 +94,7 @@
 
 .searchpage .cost span {
     padding: 10px 0;
-    width: 832px;
+    width: var(--pure-max-width);
     font-size: .9rem;
     font-weight: 400;
 }
@@ -212,6 +213,10 @@
     width: 100%;
 }
 
+.searchpage .paging a {
+    width: var(--pure-max-width);
+}
+
 .searchpage .pagingbg {
     display: flex;
     justify-content: center;
@@ -225,7 +230,7 @@
     flex-direction: row;
     align-items: center;
 
-    width: 832px;
+    width: var(--pure-max-width);
 }
 
 .searchpage .pagingbg .paginghr .page {
