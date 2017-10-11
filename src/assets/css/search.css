@@ -40,7 +40,7 @@
 }
 
 .searchpage .searchbar {
-    width: var(--max-width);
+    width: var(--pure-max-width);
 }
 
 .searchpage .searchbar .search {
