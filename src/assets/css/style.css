@@ -133,16 +133,13 @@ body {
     .entry .searchbar {
         zoom: initial;
     }
+    .entry .searchbar text-field {
+        width: 300px!important;
+    }
 }
 
 @media (max-width: 350px) {
     .searchpage .searchresults .resultcard .details {
         @apply --ellipsis;
-    }
-}
-
-@media (max-width: 320px) {
-    .entry .searchbar {
-        zoom: .7;
     }
 }

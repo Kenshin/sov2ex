@@ -34,7 +34,7 @@ export default class Entry extends React.Component{
                     </div>
                 </div>
                 <div className="desc">
-                    一个便捷的 v2ex 搜索引擎，<a href="https://github.com/Bynil/sov2ex" target="_blank">了解更多</a>  。
+                    一个便捷的 v2ex 站内搜索引擎，<a href="https://github.com/Bynil/sov2ex" target="_blank">了解更多</a>  。
                 </div>
             </div>
         )
