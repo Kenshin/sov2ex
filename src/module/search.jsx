@@ -152,7 +152,7 @@ export default class Search extends React.Component {
                 }
                 break;
             case "order":
-                if ( ![ 0, 1 ].includes( value )) {
+                if ( ![ "0", "1" ].includes( value )) {
                     value = 0;
                     new Notify().Render( 2, "order 参数错误，取值范围 0 和 1，请确认。" );
                 }
@@ -179,7 +179,7 @@ export default class Search extends React.Component {
             disable: this.props.page >= count,
             count: count == 0 ? 1 : count,
         });
-    }
+    }o
 
     fetch() {
         const page = this.props.page - 1,
