@@ -179,7 +179,7 @@ export default class Search extends React.Component {
             disable: this.props.page >= count,
             count: count == 0 ? 1 : count,
         });
-    }o
+    }
 
     fetch() {
         const page = this.props.page - 1,
