@@ -100,6 +100,7 @@ export default class Search extends React.Component {
         page : 1,
         size : 10,
         sort : "sumup",
+        node : undefined,
         order: 0,
         gte  : 0,
         lte  : 0,
@@ -184,7 +185,7 @@ export default class Search extends React.Component {
         const page = this.props.page - 1,
               from = page * this.props.size + page;
         $.ajax({
-            url     : `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}&from=${from}&size=${this.props.size}`,
+            url     : `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}&from=${from}&size=${this.props.size}&node=${this.props.node}`,
             dataType: "json",
             crossDomain: true,
         })
