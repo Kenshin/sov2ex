@@ -27,6 +27,8 @@ import Button    from 'button';
  * @param {object} props 
  */
 const ResultCard = props => {
+    let content = props.highlight.content || props.highlight["reply_list.content"] || props.highlight["postscript_list.content"];
+    content     = content && content.length > 0 ? content[0] : props.content;
     return (
         <div className="resultcard">
             <div className="title">
@@ -35,7 +37,7 @@ const ResultCard = props => {
                 </a>
             </div>
             <div className="desc">
-                { props.content }
+                { content.replace( /<\/?em>/ig, "" ) }
             </div>
             <div className="details">
                 <a href={`https://www.v2ex.com/member/${props.member}`} target="_blank">{props.member}</a>
@@ -225,7 +227,7 @@ export default class Search extends React.Component {
     render() {
 
         let hidden = false, list = this.state.list.map( item => {
-            return <ResultCard { ...item._source } />
+            return <ResultCard { ...item._source } highlight={ item.highlight } />
         });
 
         if ( !this.state.cost ) {
