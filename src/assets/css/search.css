@@ -62,18 +62,7 @@
 
     width: 35px;
     height: 35px;
-
-    border-radius: 50%;
-
-    background-color: var(--search-primary-color);
-    background-image: url( '../icons/search@x1.png' );
-    background-position: center;
-    background-repeat: no-repeat;
-
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px;
 }
-
 
 .searchpage .searchbar input {
     font-size: 18px!important;

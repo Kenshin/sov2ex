@@ -92,6 +92,8 @@ const PagingHR = props => {
     )
 }
 
+const search_icon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAtklEQVQ4T+2TUQ0CMRBE3ygACTjgJCABHIACkAIKwAFIQAI4QAIoGNKkJBxpr71wn7ef7fbtZHYqBi4NzGME/u9oy0PbM+DYE7uR9Pi8+QVOgSswr4TegYWkZxIYDqPKGzApQF9A860u9CdjY7uJSnPQAAvKwuBWZXNoewmcMypXki6pu85g214nlhSWcMrZUfwptvfANgIOknZd3haBcVEBSgmWXUplZJJtVQr7DBiBfdxK974BrbYqFVDVxssAAAAASUVORK5CYII=";
+
 export default class Search extends React.Component {
 
     static defaultProps = {
@@ -120,8 +122,8 @@ export default class Search extends React.Component {
         disable: false,
     }
 
-    onClick() {
-        this.search( this.refs.search.refs.target.value );
+    onSearchClick() {
+        setTimeout( ()=>this.search( this.refs.search.refs.target.value ), 500 );
     }
 
     onKeyDown() {
@@ -199,7 +201,7 @@ export default class Search extends React.Component {
         });
     }
 
-    onClick() {
+    onPagingClick() {
         this.props.page++;
         if ( this.props.page > this.state.count ) {
             this.setState({ disable: true });
@@ -259,7 +261,14 @@ export default class Search extends React.Component {
                                 placeholder="请输入查询的关键字" 
                                 onKeyDown={ ()=>this.onKeyDown() }
                             />
-                            <span className="bar" onClick={ ()=> this.onClick() }></span>
+                            <div className="bar">
+                                <Button
+                                    hoverColor="transparent" backgroundColor="transparent"
+                                    icon={ search_icon }
+                                    waves="md-waves-effect md-waves-circle"
+                                    onClick={ ()=>this.onSearchClick() }
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="placeholder"></div>
@@ -276,7 +285,7 @@ export default class Search extends React.Component {
                         disable={ this.state.disable }
                         color="#fff" backgroundColor="rgba(3, 169, 244, 1)"
                         waves="md-waves-effect md-waves-button"
-                        onClick={ ()=>this.onClick() }
+                        onClick={ ()=>this.onPagingClick() }
                     />
                 </div>
                 <div className="footer">
