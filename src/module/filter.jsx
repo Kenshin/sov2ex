@@ -22,6 +22,8 @@ class Filter extends React.Component {
 
     state = {
         size_error : "",
+        gte_error : "",
+        lte_error : "",
     };
 
     onSizeChange() {
@@ -68,6 +70,40 @@ class Filter extends React.Component {
         }
     }
 
+    getDay( value ) {
+        if ( !value ) return "";
+        else {
+            const date   = new Date( parseInt( value )),
+                  format = value => value = value < 10 ? "0" + value : value;
+            return date.getFullYear() + "-" + format( date.getUTCMonth() + 1 ) + "-" + format( date.getUTCDate() );
+        }
+    }
+
+    onDateChange( type, event ) {
+        console.log( type, event.target.value )
+        const value = event.target.value.trim(),
+              error = `${type}_error`;
+        if ( value == "" ) {
+            this.setState({ [error] : "" });
+            sessionStorage.removeItem( type );
+        }
+        else if ( /\w{4}-\w{2}-\w{2}/.test( value ) ) {
+            const day = new Date( value ).getTime();
+            if ( day ) {
+                this.setState({ [error] : "" });
+                sessionStorage.setItem( type, day );
+            } else {
+                this.setState({
+                    [error]: "请输入正常的时间，例如 2017-10-13"
+                });
+            }
+        } else {
+            this.setState({
+                [error]: "请输入正常的时间，例如 2017-10-13"
+            });
+        }
+    }
+
     componentWillMount() {
         if ( location.search.startsWith( "?q=" ) ) {
             const query = window.location.search.replace( "?", "" ).split( "&" );
@@ -93,6 +129,20 @@ class Filter extends React.Component {
                     value={ sessionStorage.getItem( "node" ) }
                     onChange={ ()=>this.onNodeChange() }
                 />
+                <div className="horiz">
+                    <TextField 
+                        floatingtext="发帖的起始日期" placeholder="格式为 yyyy-mm-dd"
+                        value={ this.getDay( sessionStorage.getItem( "gte" ) ) }
+                        errortext={ this.state.gte_error }
+                        onChange={ (evt)=>this.onDateChange( "gte", evt ) }
+                    />
+                    <TextField 
+                        floatingtext="发帖的结束日期" placeholder="格式为 yyyy-mm-dd"
+                        value={ this.getDay( sessionStorage.getItem( "lte" ) ) }
+                        errortext={ this.state.lte_error }
+                        onChange={ (evt)=>this.onDateChange( "lte", evt ) }
+                    />
+                </div>
                 <div className="horiz">
                     <SelectField waves="md-waves-effect"
                         name={ this.getName( sort, sessionStorage.getItem( "sort" )) } items={ sort }
