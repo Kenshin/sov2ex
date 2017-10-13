@@ -64,6 +64,17 @@
     height: 35px;
 }
 
+.searchpage .searchbar .arrow {
+    display: block;
+    position: absolute;
+
+    right: 35px;
+    bottom: 5px;
+
+    width: 35px;
+    height: 35px;
+}
+
 .searchpage .searchbar input {
     font-size: 18px!important;
     color: var(--search-primary-color) !important;

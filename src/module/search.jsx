@@ -92,7 +92,8 @@ const PagingHR = props => {
     )
 }
 
-const search_icon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAtklEQVQ4T+2TUQ0CMRBE3ygACTjgJCABHIACkAIKwAFIQAI4QAIoGNKkJBxpr71wn7ef7fbtZHYqBi4NzGME/u9oy0PbM+DYE7uR9Pi8+QVOgSswr4TegYWkZxIYDqPKGzApQF9A860u9CdjY7uJSnPQAAvKwuBWZXNoewmcMypXki6pu85g214nlhSWcMrZUfwptvfANgIOknZd3haBcVEBSgmWXUplZJJtVQr7DBiBfdxK974BrbYqFVDVxssAAAAASUVORK5CYII=";
+const search_icon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABWUlEQVQ4T61UbVUDQRBLFIADWgXgAFAADgAFFAW0CigOWgfgABRQBxwOQEF4uTfbt7fduwPK/Lv9yGaSzBH/XKzhSZoAuABwBuAQwCeAFwDPJJshDjuAkuYAbgOodndJ8q4PtAMoaQXgKg5/AdgEs5NgexB7Xj8naead2gIGs/vYXQOY5RckufXE3sceSc6qgKHZW7S5Jnnd11Lx8LTUtGUoyS89AHCbk1or+QOSbMxRjWUCfApXX0na2cGStAzjds4nQEfiFMCCpHUaA/QZ690LmBg6Z5c/ABxlmDR0DCz0Thx+q6En4z0uVeOQADMDvVR3OZxObfhzTnJRtl6ANSSnvcEOUE/AcRxyNKyt23eora07yWtF8iZfKEevnIaaPx+RwbTXAR3629goz3Aqs/ePoSlm3vtb0CrgWGxCnvxH4qXWzD8DVkDbDO8FmKXDZjkZm70BS3m+Adf+mhXFbtFFAAAAAElFTkSuQmCC",
+      arrow_icon  = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAtklEQVQ4T+2TUQ0CMRBE3ygACTjgJCABHIACkAIKwAFIQAI4QAIoGNKkJBxpr71wn7ef7fbtZHYqBi4NzGME/u9oy0PbM+DYE7uR9Pi8+QVOgSswr4TegYWkZxIYDqPKGzApQF9A860u9CdjY7uJSnPQAAvKwuBWZXNoewmcMypXki6pu85g214nlhSWcMrZUfwptvfANgIOknZd3haBcVEBSgmWXUplZJJtVQr7DBiBfdxK974BrbYqFVDVxssAAAAASUVORK5CYII=";
 
 export default class Search extends React.Component {
 
@@ -124,6 +125,10 @@ export default class Search extends React.Component {
 
     onSearchClick() {
         setTimeout( ()=>this.search( this.refs.search.refs.target.value ), 500 );
+    }
+
+    arrowOnClick() {
+        $( ".filtergp" ).toggleClass( "filtergp-top" );
     }
 
     onKeyDown() {
@@ -269,6 +274,15 @@ export default class Search extends React.Component {
                                     onClick={ ()=>this.onSearchClick() }
                                 />
                             </div>
+                            <div className="arrow">
+                                <Button
+                                    hoverColor="transparent" backgroundColor="transparent"
+                                    icon={ arrow_icon }
+                                    waves="md-waves-effect md-waves-circle"
+                                    onClick={ ()=>this.arrowOnClick() }
+                                    />
+                            </div>
+                            <div className="filtergp"></div>
                         </div>
                     </div>
                     <div className="placeholder"></div>

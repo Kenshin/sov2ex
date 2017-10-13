@@ -13,6 +13,10 @@ export default class Entry extends React.Component{
         this.search( this.refs.search.refs.target.value );
     }
 
+    arrowOnClick() {
+        $( ".filtergp" ).toggleClass( "filtergp-top" );
+    }
+
     search( value ) {
         window.location.href = window.location.origin + window.location.pathname + `?q=${value}`;
     }
@@ -31,6 +35,8 @@ export default class Entry extends React.Component{
                             onKeyDown={ ()=> this.onKeyDown() }
                         />
                         <span className="bar" onClick={ ()=> this.onClick() }></span>
+                        <span className="arrow" onClick={ ()=> this.arrowOnClick() }></span>
+                        <div className="filtergp"></div>
                     </div>
                 </div>
                 <div className="desc">
