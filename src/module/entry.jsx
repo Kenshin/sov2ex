@@ -32,6 +32,10 @@ export default class Entry extends React.Component{
         }
     }
 
+    componentWillMount() {
+        sessionStorage.clear();
+    }
+
     render() {
         return (
             <div className="entry">
