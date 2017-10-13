@@ -1,6 +1,8 @@
 console.log( "==== sov2ex module: Entry ====" )
 
-import TextField from 'textfield';
+import TextField   from 'textfield';
+
+import * as filter from 'filter';
 
 export default class Entry extends React.Component{
 
@@ -14,6 +16,7 @@ export default class Entry extends React.Component{
     }
 
     arrowOnClick() {
+        filter.Render( $( ".filtergp" )[0] );
         $( ".filtergp" ).toggleClass( "filtergp-top" );
     }
 

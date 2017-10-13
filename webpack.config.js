@@ -227,6 +227,7 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' ),
           index      : __dirname + '/src/index.jsx',
           entry      : __dirname + '/src/module/entry.jsx',
           search     : __dirname + '/src/module/search.jsx',
+          filter     : __dirname + '/src/module/filter.jsx',
           controlbar : __dirname + '/src/module/controlbar.jsx',
 
         }

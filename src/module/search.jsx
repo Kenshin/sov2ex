@@ -1,7 +1,9 @@
 console.log( "==== sov2ex module: Search ====" )
 
-import TextField from 'textfield';
-import Button    from 'button';
+import TextField   from 'textfield';
+import Button      from 'button';
+
+import * as filter from 'filter';
 
 /**
  * Result Card
@@ -128,6 +130,7 @@ export default class Search extends React.Component {
     }
 
     arrowOnClick() {
+        filter.Render( $( ".filtergp" )[0] );
         $( ".filtergp" ).toggleClass( "filtergp-top" );
     }
 
