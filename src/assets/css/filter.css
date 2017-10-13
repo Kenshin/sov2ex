@@ -41,7 +41,7 @@
 }
 
 .filter select-field:first-child {
-    margin-right: 5px;
+    margin-right: 5px!important;
 }
 
 .filter text-field-float,
