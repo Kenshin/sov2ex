@@ -141,7 +141,11 @@ export default class Search extends React.Component {
 
     search( value ) {
         if ( value.trim() != "" ) {
-            window.location.href = window.location.origin + window.location.pathname + `?q=${value}`;
+            let url = window.location.origin + window.location.pathname + `?q=${value}`;
+            Object.keys( sessionStorage ).forEach( key => url += `&${key}=${sessionStorage[key]}`);
+            sessionStorage.clear();
+            console.log( sessionStorage, url )
+            window.location.href = url;
         } else {
             new Notify().Render( "不能为空，请输入正确的值。" );
         }
@@ -150,7 +154,7 @@ export default class Search extends React.Component {
     validation( key, value ) {
         switch ( key ) {
             case "page":
-                if ( !/[1-9]+/.test( value ) || value < 1 ) {
+                if ( !/\d+$/.test( value ) || value < 1 ) {
                     value = 1;
                     new Notify().Render( 2, "page 参数错误，取值范围最小值为 1 的正整数，请确认。" );
                 }
@@ -178,8 +182,8 @@ export default class Search extends React.Component {
     }
 
     parse( result ) {
-        const count  = Math.floor( result.total / this.props.size ),
-              list = this.state.list.concat( result.hits );
+        const count = Math.floor( result.total / this.props.size ),
+              list  = this.state.list.concat( result.hits );
         this.setState({
             list,
             cost: {

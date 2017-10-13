@@ -22,7 +22,11 @@ export default class Entry extends React.Component{
 
     search( value ) {
         if ( value.trim() != "" ) {
-            window.location.href = window.location.origin + window.location.pathname + `?q=${value}`;
+            let url = window.location.origin + window.location.pathname + `?q=${value}`;
+            Object.keys( sessionStorage ).forEach( key => url += `&${key}=${sessionStorage[key]}`);
+            sessionStorage.clear();
+            console.log( sessionStorage, url )
+            window.location.href = url;
         } else {
             new Notify().Render( "不能为空，请输入正确的值。" );
         }
