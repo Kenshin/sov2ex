@@ -5,6 +5,8 @@ import Button      from 'button';
 
 import * as filter from 'filter';
 
+import pangu       from 'pangu';
+
 /**
  * Result Card
  * 
@@ -35,11 +37,11 @@ const ResultCard = props => {
         <div className="resultcard">
             <div className="title">
                 <a href={ `http://www.v2ex.com/t/${props.id}` } target="_blank">
-                    { props.title }
+                    { pangu.spacing( props.title )}
                 </a>
             </div>
             <div className="desc">
-                { content.replace( /<\/?em>/ig, "" ) }
+                { pangu.spacing( content.replace( /<\/?em>/ig, "" ))}
             </div>
             <div className="details">
                 <a href={`https://www.v2ex.com/member/${props.member}`} target="_blank">{props.member}</a>
