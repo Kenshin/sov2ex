@@ -134,8 +134,8 @@ body {
     .entry .searchbar {
         zoom: initial;
     }
-    .entry .searchbar text-field {
-        width: 300px!important;
+    .entry .search {
+        width: 90%!important;
     }
 }
 
