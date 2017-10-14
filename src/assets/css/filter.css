@@ -40,6 +40,7 @@
     margin-bottom: 25px!important;
 }
 
+.filter text-field:first-child,
 .filter select-field:first-child {
     margin-right: 5px!important;
 }
@@ -47,6 +48,10 @@
 .filter text-field-float,
 .filter select-float {
     color: var(--primary-color)!important;
+}
+
+.entry .searchbar .search .filter text-field text-field-error {
+    padding-left: 10px;
 }
 
 .searchpage .searchbar .filter text-field text-field-state {
