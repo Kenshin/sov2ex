@@ -55,6 +55,10 @@ body {
         zoom: .5;
     }
 
+    .entry .searchbar .search .filter .horiz text-field text-field-error {
+        transform: scale(0.75) translate( -73px, 0 )!important;
+    }
+
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {

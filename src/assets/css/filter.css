@@ -50,6 +50,10 @@
     color: var(--primary-color)!important;
 }
 
+.entry .searchbar .search .filter .horiz text-field text-field-error {
+    transform: scale(0.75) translate( -43px, 0 )!important;
+}
+
 .entry .searchbar .search .filter text-field text-field-error {
     padding-left: 10px;
 }
