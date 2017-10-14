@@ -51,6 +51,10 @@ body {
         padding-right: 5px;
     }
 
+    text-field-error {
+        zoom: .5;
+    }
+
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -63,6 +67,10 @@ body {
         min-width: initial;
         width: 90%;
     }
+
+    text-field-error {
+        zoom: .4;
+    }
 }
 
 @media (max-width: 767px) {
@@ -74,6 +82,10 @@ body {
     .footer .groups {
         min-width: initial;
         width: 85%;
+    }
+
+    text-field-error {
+        zoom: .3;
     }
 }
 

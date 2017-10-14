@@ -94,12 +94,12 @@ class Filter extends React.Component {
                 sessionStorage.setItem( type, day );
             } else {
                 this.setState({
-                    [error]: "请输入正常的时间，例如 2017-10-13"
+                    [error]: "格式错误，如 2017-10-13"
                 });
             }
         } else {
             this.setState({
-                [error]: "请输入正常的时间，例如 2017-10-13"
+                [error]: "格式错误，如 2017-10-13"
             });
         }
     }
