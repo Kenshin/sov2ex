@@ -24,6 +24,7 @@ class Filter extends React.Component {
         size_error : "",
         gte_error : "",
         lte_error : "",
+        order_disable: true,
     };
 
     onSizeChange() {
@@ -53,6 +54,9 @@ class Filter extends React.Component {
         console.log( value, name )
         value == sort[0].value ? sessionStorage.removeItem( "sort" ) :
             sessionStorage.setItem( "sort", value );
+         this.setState({
+            order_disable: value == sort[0].value
+        });
     }
 
     onOrderChange( value, name ) {
@@ -150,7 +154,8 @@ class Filter extends React.Component {
                         onChange={ (v,n)=>this.onSortChange(v,n) }
                     />
                     <SelectField waves="md-waves-effect"
-                    name={ this.getName( order, sessionStorage.getItem( "order" )) } items={ order }
+                        disable={ !(sessionStorage.getItem( "sort" ) == sort[1].value) }
+                        name={ this.getName( order, sessionStorage.getItem( "order" )) } items={ order }
                         floatingtext="发帖时间"
                         onChange={ (v,n)=>this.onOrderChange(v,n) }
                     />
