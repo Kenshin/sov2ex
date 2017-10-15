@@ -135,14 +135,16 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' ),
 
           // component
           'textfield',
-          'fab',
           'button',
           'selectfield',
+          /*
+          'fab',
           'switch',
           'tabs',
           'sidebar',
           'list',
           'dialog',
+          */
           'tooltip',
           'waves'
         ],
