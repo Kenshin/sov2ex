@@ -76,6 +76,9 @@ class Filter extends React.Component {
 
     getDay( value ) {
         if ( !value ) return "";
+        else if ( !/\d+$/.test( value ) ) {
+            return "";
+        }
         else {
             const date   = new Date( parseInt( value )),
                   format = value => value = value < 10 ? "0" + value : value;

@@ -179,6 +179,12 @@ export default class Search extends React.Component {
                     new Notify().Render( 2, "sort 参数错误，取值范围 sumup 和 created，请确认。" );
                 }
                 break;
+            case "gte":
+            case "lte":
+                if ( !/\d+$/.test( value ) ) {
+                    new Notify().Render( 2, `${key} 参数错误，正确格式为 yyyy-mm-dd，请确认。` );
+                }
+                break;
         }
         return value;
     }
