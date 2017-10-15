@@ -6,7 +6,7 @@ import * as filter from 'filter';
 
 export default class Entry extends React.Component{
 
-    onKeyDown() {
+    onKeyDown( event ) {
         event.keyCode == 13 &&
             this.search( event.target.value );
     }
@@ -47,7 +47,7 @@ export default class Entry extends React.Component{
                         <TextField 
                             ref="search"
                             placeholder="请输入查询的关键字" 
-                            onKeyDown={ ()=> this.onKeyDown() }
+                            onKeyDown={ (e)=> this.onKeyDown(e) }
                         />
                         <span className="bar" onClick={ ()=> this.onClick() }></span>
                         <span className="arrow" onClick={ ()=> this.arrowOnClick() }></span>

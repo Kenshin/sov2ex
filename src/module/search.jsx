@@ -136,7 +136,7 @@ export default class Search extends React.Component {
         $( ".filtergp" ).toggleClass( "filtergp-top" );
     }
 
-    onKeyDown() {
+    onKeyDown( event ) {
         event.keyCode == 13 &&
             this.search( event.target.value );
     }
@@ -273,7 +273,7 @@ export default class Search extends React.Component {
                                 ref="search" 
                                 value={ decodeURI( this.props.q ) }
                                 placeholder="请输入查询的关键字" 
-                                onKeyDown={ ()=>this.onKeyDown() }
+                                onKeyDown={ (e)=>this.onKeyDown(e) }
                             />
                             <div className="bar">
                                 <Button

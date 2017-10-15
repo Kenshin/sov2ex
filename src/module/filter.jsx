@@ -27,7 +27,7 @@ class Filter extends React.Component {
         order_disable: true,
     };
 
-    onSizeChange() {
+    onSizeChange( event ) {
         const value = event.target.value.trim();
         if ( value == "" ) {
             this.setState({ size_error : "" });
@@ -44,7 +44,7 @@ class Filter extends React.Component {
         }
     }
 
-    onNodeChange() {
+    onNodeChange( event ) {
         console.log( event.target.value.trim())
         event.target.value.trim() == "" ? sessionStorage.removeItem( "node" ) :
             sessionStorage.setItem( "node", event.target.value.trim() );
@@ -126,12 +126,12 @@ class Filter extends React.Component {
                     floatingtext="每页查询数量" placeholder="默认每页显示 10 条数据，取值范围在 1 ~ 50"
                     value={ sessionStorage.getItem( "size" ) }
                     errortext={ this.state.size_error }
-                    onChange={ ()=>this.onSizeChange() }
+                    onChange={ (e)=>this.onSizeChange(e) }
                 />
                 <TextField 
                     floatingtext="查询节点" placeholder="为空时，查询全部节点；支持节点名称与 节点 id"
                     value={ sessionStorage.getItem( "node" ) }
-                    onChange={ ()=>this.onNodeChange() }
+                    onChange={ (e)=>this.onNodeChange(e) }
                 />
                 <div className="horiz">
                     <TextField 
