@@ -168,13 +168,13 @@ export default class Search extends React.Component {
                 }
                 break;
             case "order":
-                if ( ![ "0", "1" ].includes( value )) {
+                if ( value != "0" || value != "1" ) {
                     value = 0;
                     new Notify().Render( 2, "order 参数错误，取值范围 0 和 1，请确认。" );
                 }
                 break;
             case "sort":
-                if ( ![ "sumup", "created" ].includes( value )) {
+                if ( value != "sumup" || value != "created" ) {
                     value = "sumup";
                     new Notify().Render( 2, "sort 参数错误，取值范围 sumup 和 created，请确认。" );
                 }
