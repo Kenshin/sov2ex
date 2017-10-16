@@ -76,6 +76,8 @@
 }
 
 .searchpage .searchbar input {
+    height: 18px;
+    line-height: 18px;
     font-size: 18px!important;
     color: var(--search-primary-color) !important;
 }
