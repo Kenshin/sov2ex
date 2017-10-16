@@ -22,7 +22,10 @@
 - https://github.com/bynil/sov2ex/blob/master/API.md
 
 #### 更新日志：
-- version 1.0.0 2017-10-16
+- version `beta 1.0.0` at 2017-09-24
+  * 上线简单的关键词查询，开放源码和 API；
+
+- version `1.0.0` at 2017-10-16
   * 完成 `Metarial design 风格` `高级查询` `手机端` 支持；
 
 #### 作者：
@@ -34,6 +37,10 @@
 * [反馈](https://github.com/bynil/sov2ex/issues)
 
 #### SOV2EX 的诞生离不开它们：
+- [Elasticsearch](https://www.elastic.co/)
+- [IK Analysis for Elasticsearch](https://github.com/medcl/elasticsearch-analysis-ik)
+- [Flask](http://flask.pocoo.org/)
+- [MongoDB](https://www.mongodb.com/)
 - [Node.js](https://nodejs.org/) · [NPM](https://www.npmjs.com)
 - [Webpack](https://webpack.github.io/)
 - [React](https://facebook.github.io/react)
@@ -50,13 +57,5 @@
 [![license-badge]][license-link]
 
 <!-- Link -->
-[www-badge]:        https://img.shields.io/badge/website-_simpread.ksria.com-1DBA90.svg
-[www-link]:         http://ksria.com/simpread
-[version-badge]:    https://img.shields.io/badge/lastest_version-1.0.3-blue.svg
-[version-link]:     https://github.com/kenshin/simpread/releases
-[chrome-badge]:     https://img.shields.io/badge/download-_chrome_webstore-brightgreen.svg
-[chrome-link]:      https://chrome.google.com/webstore/detail/%E7%AE%80%E6%82%A6-simpread/ijllcpnolfcooahcekpamkbidhejabll
-[offline-badge]:    https://img.shields.io/badge/download-_crx-brightgreen.svg
-[offline-link]:     http://ksria.com/simpread/crx/1.0.3/simpread.crx
 [license-badge]:    https://img.shields.io/github/license/mashape/apistatus.svg
 [license-link]:     https://opensource.org/licenses/MIT
