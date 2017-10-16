@@ -72,6 +72,10 @@ body {
         width: 90%;
     }
 
+    .empty {
+        zoom: .8;
+    }
+
     text-field-error {
         zoom: .4;
     }
@@ -86,6 +90,10 @@ body {
     .footer .groups {
         min-width: initial;
         width: 85%;
+    }
+
+    .empty {
+        zoom: .8;
     }
 
     text-field-error {
@@ -147,6 +155,10 @@ body {
     .notify-modal {
         zoom: .5;
     }
+    .empty {
+        zoom: .6;
+    }
+
 }
 
 @media (max-width: 368px) {
