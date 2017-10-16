@@ -138,13 +138,13 @@ class Filter extends React.Component {
                 />
                 <div className="horiz">
                     <TextField 
-                        floatingtext="发帖的起始日期" placeholder="格式为 yyyy-mm-dd"
+                        floatingtext="发帖的起始日期" placeholder="格式为 YYYY-MM-DD"
                         value={ this.getDay( sessionStorage.getItem( "gte" ) ) }
                         errortext={ this.state.gte_error }
                         onChange={ (evt)=>this.onDateChange( "gte", evt ) }
                     />
                     <TextField 
-                        floatingtext="发帖的结束日期" placeholder="格式为 yyyy-mm-dd"
+                        floatingtext="发帖的结束日期" placeholder="格式为 YYYY-MM-DD"
                         value={ this.getDay( sessionStorage.getItem( "lte" ) ) }
                         errortext={ this.state.lte_error }
                         onChange={ (evt)=>this.onDateChange( "lte", evt ) }
