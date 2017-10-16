@@ -36,6 +36,10 @@
     flex-direction: row;
 }
 
+text-field input::-webkit-input-placeholder {
+    font-size: 13px!important;
+}
+
 .filter text-field {
     margin-bottom: 25px!important;
 }
@@ -71,6 +75,5 @@
 }
 
 .searchpage .searchbar .filter input::-webkit-input-placeholder {
-    font-size: 13px;
     color: color( var(--text-color) alpha(-13%))!important;
 }
