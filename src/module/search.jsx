@@ -36,7 +36,7 @@ const ResultCard = props => {
     return (
         <div className="resultcard">
             <div className="title">
-                <a href={ `http://www.v2ex.com/t/${props.id}` } target="_blank">
+                <a href={ `https://www.v2ex.com/t/${props.id}` } target="_blank">
                     { pangu.spacing( props.title )}
                 </a>
             </div>
