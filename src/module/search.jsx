@@ -142,7 +142,9 @@ export default class Search extends React.Component {
     }
 
     search( value ) {
-        if ( value.trim() != "" ) {
+        if ( /[%#&]/ig.test( value ) ) {
+            new Notify().Render( "不能包含特殊字符 % # &" );
+        } else if ( value.trim() != "" ) {
             let url = window.location.origin + window.location.pathname + `?q=${value}`;
             Object.keys( sessionStorage ).forEach( key => url += `&${key}=${sessionStorage[key]}`);
             sessionStorage.clear();
@@ -235,16 +237,25 @@ export default class Search extends React.Component {
     }
 
     componentWillMount() {
-        if ( location.search.startsWith( "?q=" ) ) {
-            const query = window.location.search.replace( "?", "" ).split( "&" );
-            query && query.length > 0 && query.forEach( item => {
-                const [ key, value ] = item.split( "=" );
-                this.props[key]      = this.validation( key, value );
-            });
-            this.props.q != "" && this.fetch();
-            this.props.q != "" && $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
+        const search = location.search.trim();
+        if ( search.startsWith( "?q=" ) && search != "?q=" ) {
+            if ( /[%#&]/ig.test( search ) ) {
+                new Notify().Render( "不能包含特殊字符 % # &" );
+                this.props.q = "";
+                this.setState({ list: [], cost: { total: 0 }, });
+            } else {
+                const query = search.replace( "?", "" ).split( "&" );
+                query && query.length > 0 && query.forEach( item => {
+                    const [ key, value ] = item.split( "=" );
+                    this.props[key]      = this.validation( key, value );
+                });
+                this.props.q != "" && this.fetch();
+                this.props.q != "" && $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
+            }
         } else {
             new Notify().Render( "搜索发送了错误，请重新打开本页。" );
+            this.props.q = "";
+            this.setState({ list: [], cost: { total: 0 }, });
         }
     }
 
@@ -278,7 +289,7 @@ export default class Search extends React.Component {
                         <div className="search">
                             <TextField 
                                 ref="search" 
-                                value={ decodeURI( this.props.q ) }
+                                value={ /[%#&]/ig.test( this.props.q ) ? this.props.q : decodeURI( this.props.q ) }
                                 placeholder="请输入查询的关键字" 
                                 onKeyDown={ (e)=>this.onKeyDown(e) }
                             />
