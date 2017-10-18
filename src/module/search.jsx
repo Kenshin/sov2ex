@@ -213,7 +213,7 @@ export default class Search extends React.Component {
             crossDomain: true,
         })
         .done( result => {
-            console.log( result )
+            console.log( result, url, page, from )
             this.parse( result )
         })
         .fail( error => {
