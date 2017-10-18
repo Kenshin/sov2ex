@@ -223,6 +223,7 @@ export default class Search extends React.Component {
         .fail( error => {
             console.error( error )
             new Notify().Render( 2, "当前发生了一些错误，请稍候再使用此服务。" );
+            this.failed();
         });
     }
 
@@ -238,26 +239,34 @@ export default class Search extends React.Component {
         }
     }
 
+    failed() {
+        this.props.q = "";
+        this.setState({ list: [], cost: { total: 0 }});
+    }
+
     componentWillMount() {
         const search = location.search.trim();
         if ( search.startsWith( "?q=" ) && search != "?q=" ) {
-            if ( /[%#&]/ig.test( search ) ) {
+            if ( /[%#]/ig.test( search ) ) {
                 new Notify().Render( "不能包含特殊字符 % # &" );
-                this.props.q = "";
-                this.setState({ list: [], cost: { total: 0 }, });
+                this.failed();
             } else {
                 const query = search.replace( "?", "" ).split( "&" );
                 query && query.length > 0 && query.forEach( item => {
                     const [ key, value ] = item.split( "=" );
                     this.props[key]      = this.validation( key, value );
                 });
-                this.props.q != "" && this.fetch();
-                this.props.q != "" && $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
+                if ( this.props.q != "" ) {
+                    this.fetch();
+                    $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
+                } else {
+                    new Notify().Render( "搜索内容不能为空" );
+                    this.failed();
+                }
             }
         } else {
             new Notify().Render( "搜索发送了错误，请重新打开本页。" );
-            this.props.q = "";
-            this.setState({ list: [], cost: { total: 0 }, });
+            this.failed();
         }
     }
 
