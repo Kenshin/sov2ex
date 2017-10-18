@@ -150,7 +150,7 @@ export default class Search extends React.Component {
             Object.keys( sessionStorage ).forEach( key => url += `&${key}=${sessionStorage[key]}`);
             sessionStorage.clear();
             console.log( sessionStorage, url )
-            window.location.href = url;
+            window.location.href = url.replace( /&page=\d+/ig, "" );
         } else {
             new Notify().Render( "不能为空，请输入正确的值。" );
         }
