@@ -2,7 +2,7 @@
 node_modules/**
 src/bundle/**
 publish/**
-www/**
+bynil/**
 
 # for mac
 **/.DS_Store
