@@ -222,7 +222,7 @@ export default class Search extends React.Component {
         })
         .fail( error => {
             console.error( error )
-            new Notify().Render( 2, "当前发生了一些错误，请稍候再使用此服务。" );
+            new Notify().Render( 2, "当前发生了一些错误，请重新输入。" );
             this.failed();
         });
     }
