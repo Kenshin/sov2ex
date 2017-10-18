@@ -106,6 +106,7 @@ export default class Search extends React.Component {
         q    : undefined,
         page : 1,
         size : 10,
+        max  : 1000,
         sort : "sumup",
         node : undefined,
         order: 0,
@@ -192,8 +193,9 @@ export default class Search extends React.Component {
     }
 
     parse( result ) {
-        const count = Math.floor( result.total / this.props.size ),
-              list  = this.state.list.concat( result.hits );
+        let count = Math.floor( result.total / this.props.size ),
+            list  = this.state.list.concat( result.hits );
+        count     = count * this.props.size > this.props.max ? Math.floor( this.props.max / this.props.size ) : count;
         this.setState({
             list,
             cost: {
@@ -206,8 +208,8 @@ export default class Search extends React.Component {
     }
 
     fetch() {
-        const page = this.props.page - 1,
-              from = page * this.props.size + page,
+        const page = this.props.page,
+              from = ( page - 1 ) * this.props.size,
               url  = `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}&from=${from}&size=${this.props.size}&node=${this.props.node}&lte=${parseInt(this.props.lte)/1000}&gte=${parseInt(this.props.gte)/1000}`;
         $.ajax({
             url,
