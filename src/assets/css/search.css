@@ -162,7 +162,7 @@
     height: auto;
     max-height: 73px;
 
-    color: color( var(--text-color) alpha(-46%));
+    color: color( var(--text-color) alpha(-30%));
     font-size: 1rem;
 }
 
