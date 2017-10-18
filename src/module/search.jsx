@@ -245,12 +245,9 @@ export default class Search extends React.Component {
     }
 
     componentWillMount() {
-        const search = location.search.trim();
-        if ( search.startsWith( "?q=" ) && search != "?q=" ) {
-            if ( /[%#]/ig.test( search ) ) {
-                new Notify().Render( "不能包含特殊字符 % # &" );
-                this.failed();
-            } else {
+        try {
+            const search = decodeURI( location.search.trim() );
+            if ( search.startsWith( "?q=" ) && search != "?q=" ) {
                 const query = search.replace( "?", "" ).split( "&" );
                 query && query.length > 0 && query.forEach( item => {
                     const [ key, value ] = item.split( "=" );
@@ -258,14 +255,17 @@ export default class Search extends React.Component {
                 });
                 if ( this.props.q != "" ) {
                     this.fetch();
-                    $( "head title" ).text( `${decodeURI( this.props.q )} - SOV2EX 搜索结果` );
+                    $( "head title" ).text( `${this.props.q} - SOV2EX 搜索结果` );
                 } else {
-                    new Notify().Render( "搜索内容不能为空" );
+                    new Notify().Render( "搜索内容有误，请重新搜索。" );
                     this.failed();
                 }
+            } else {
+                new Notify().Render( "搜索内容有误，请重新搜索。" );
+                this.failed();
             }
-        } else {
-            new Notify().Render( "搜索发送了错误，请重新打开本页。" );
+        } catch ( error ) {
+            new Notify().Render( "不能包含特殊字符 % # &" );
             this.failed();
         }
     }
