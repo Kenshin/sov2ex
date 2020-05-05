@@ -31,7 +31,7 @@ class Filter extends React.Component {
         const value = event.target.value.trim();
         if ( value == "" ) {
             this.setState({ size_error : "" });
-            sessionStorage.removeItem( "size" );
+            localStorage.removeItem( "size" );
         }
         else if ( !/^\d+$/.test( value ) || value < 1 || value > 50 ) {
             this.setState({
@@ -40,7 +40,7 @@ class Filter extends React.Component {
         } else {
             console.log( value )
             this.setState({ size_error : "" });
-            sessionStorage.setItem( "size", value );
+            localStorage.setItem( "size", value );
         }
     }
 
@@ -50,10 +50,16 @@ class Filter extends React.Component {
             sessionStorage.setItem( "node", event.target.value.trim() );
     }
 
+    onUsernameChange( event ) {
+        console.log( event.target.value.trim())
+        event.target.value.trim() == "" ? sessionStorage.removeItem( "username" ) :
+            sessionStorage.setItem( "username", event.target.value.trim() );
+    }
+
     onSortChange( value, name ) {
         console.log( value, name )
-        value == sort[0].value ? sessionStorage.removeItem( "sort" ) :
-            sessionStorage.setItem( "sort", value );
+        value == sort[0].value ? localStorage.removeItem( "sort" ) :
+            localStorage.setItem( "sort", value );
          this.setState({
             order_disable: value == sort[0].value
         });
@@ -61,8 +67,8 @@ class Filter extends React.Component {
 
     onOrderChange( value, name ) {
         console.log( value, name )
-        value == order[0].value ? sessionStorage.removeItem( "order" ) :
-            sessionStorage.setItem( "order", value );
+        value == order[0].value ? localStorage.removeItem( "order" ) :
+            localStorage.setItem( "order", value );
     }
 
     getName( filter, value ) {
@@ -116,7 +122,8 @@ class Filter extends React.Component {
             const query = window.location.search.replace( "?", "" ).split( "&" );
             query && query.length > 0 && query.forEach( item => {
                 const [ key, value ] = item.split( "=" );
-                key != "q" && sessionStorage.setItem( key, decodeURI( value ) );
+                ["q", "size", "sort", "order"].indexOf(key) === -1 && sessionStorage.setItem( key, decodeURI( value ) );
+                ["size", "sort", "order"].indexOf(key) !== -1 && localStorage.setItem( key, decodeURI( value ) );
             });
             console.log( sessionStorage )
         }
@@ -127,7 +134,7 @@ class Filter extends React.Component {
             <div className="filter">
                 <TextField 
                     floatingtext="每页查询数量" placeholder="默认每页显示 10 条数据，取值范围在 1 ~ 50"
-                    value={ sessionStorage.getItem( "size" ) }
+                    value={ localStorage.getItem( "size" ) }
                     errortext={ this.state.size_error }
                     onChange={ (e)=>this.onSizeChange(e) }
                 />
@@ -135,6 +142,11 @@ class Filter extends React.Component {
                     floatingtext="查询节点" placeholder="为空时，查询全部节点；支持节点名称与 节点 id"
                     value={ sessionStorage.getItem( "node" ) }
                     onChange={ (e)=>this.onNodeChange(e) }
+                />
+                <TextField 
+                    floatingtext="指定主题作者" placeholder="为空时，查询所有作者；不区分大小写。"
+                    value={ sessionStorage.getItem( "username" ) }
+                    onChange={ (e)=>this.onUsernameChange(e) }
                 />
                 <div className="horiz">
                     <TextField 
@@ -152,13 +164,13 @@ class Filter extends React.Component {
                 </div>
                 <div className="horiz">
                     <SelectField waves="md-waves-effect"
-                        name={ this.getName( sort, sessionStorage.getItem( "sort" )) } items={ sort }
+                        name={ this.getName( sort, localStorage.getItem( "sort" )) } items={ sort }
                         floatingtext="查询结果排序"
                         onChange={ (v,n)=>this.onSortChange(v,n) }
                     />
                     <SelectField waves="md-waves-effect"
-                        disable={ !(sessionStorage.getItem( "sort" ) == sort[1].value) }
-                        name={ this.getName( order, sessionStorage.getItem( "order" )) } items={ order }
+                        disable={ !(localStorage.getItem( "sort" ) == sort[1].value) }
+                        name={ this.getName( order, localStorage.getItem( "order" )) } items={ order }
                         floatingtext="发帖时间"
                         onChange={ (v,n)=>this.onOrderChange(v,n) }
                     />

@@ -23,6 +23,7 @@ export default class Entry extends React.Component{
     search( value ) {
         if ( value.trim() != "" ) {
             let url = window.location.origin + window.location.pathname + `?q=${value}`;
+            Object.keys( localStorage ).forEach( key => url += `&${key}=${localStorage[key]}`);
             Object.keys( sessionStorage ).forEach( key => url += `&${key}=${sessionStorage[key]}`);
             sessionStorage.clear();
             console.log( sessionStorage, url )
@@ -60,6 +61,9 @@ export default class Entry extends React.Component{
                 </div>
                 <div className="desc">
                     一个便捷的 v2ex 站内搜索引擎，<a href="https://github.com/Bynil/sov2ex" target="_blank">了解更多</a>  。
+                </div>
+                <div className="record">
+                    &copy;2020 - <a href="http://www.beian.miit.gov.cn" target="_blank">沪ICP备14011813号 </a >
                 </div>
             </div>
         )
