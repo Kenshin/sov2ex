@@ -109,6 +109,7 @@ export default class Search extends React.Component {
         max  : 1000,
         sort : "sumup",
         node : undefined,
+        username: undefined,
         order: 0,
         gte  : 0,
         lte  : 0,
@@ -147,6 +148,7 @@ export default class Search extends React.Component {
             new Notify().Render( "不能包含特殊字符 % # &" );
         } else if ( value.trim() != "" ) {
             let url = window.location.origin + window.location.pathname + `?q=${value}`;
+            Object.keys( localStorage ).forEach( key => url += `&${key}=${localStorage[key]}`);
             Object.keys( sessionStorage ).forEach( key => url += `&${key}=${sessionStorage[key]}`);
             sessionStorage.clear();
             console.log( sessionStorage, url )
@@ -210,7 +212,7 @@ export default class Search extends React.Component {
     fetch() {
         const page = this.props.page,
               from = ( page - 1 ) * this.props.size,
-              url  = `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}&from=${from}&size=${this.props.size}&node=${this.props.node}&lte=${parseInt(this.props.lte)/1000}&gte=${parseInt(this.props.gte)/1000}`;
+              url  = `${this.props.url}?q=${this.props.q}&sort=${this.props.sort}&order=${this.props.order}&from=${from}&size=${this.props.size}&node=${this.props.node}&lte=${parseInt(this.props.lte)/1000}&gte=${parseInt(this.props.gte)/1000}` + (this.props.username ? `&username=${this.props.username}` : '');
         $.ajax({
             url,
             dataType: "json",

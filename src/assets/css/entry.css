@@ -79,3 +79,15 @@
     border-right: none var(--primary-color) !important;
     border-bottom: 2px solid var(--primary-color) !important;
 }
+
+.entry .record {
+    color: color( var(--text-color) alpha(-20%));
+    font-size: .7rem;
+    text-align: center;
+    margin: 20px 0
+}
+
+.entry .record a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
